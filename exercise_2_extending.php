@@ -2,6 +2,55 @@
 
 declare(strict_types=1);
 
+class Beverage
+{
+    public string $name;
+    public string $color;
+    public float $price;
+    public string $temperature;
+
+    public function __construct(string $name, string $color, float $price)
+    {
+        $this->name = $name;
+        $this->color = $color;
+        $this->price = $price;
+        $this->temperature = "cold";
+    }
+
+    public function getInfo(): void
+    {
+        echo "This $this->name is $this->temperature and has a $this->color color. The price for a $this->name: €$this->price";
+        echo "<br>";
+    }
+}
+
+class Beer extends Beverage
+{
+    public string $name;
+    public float $alcoholPercentage;
+
+    public function __construct(string $name, string $color, float $price, float $alcoholPercentage)
+    {
+        parent::__construct($name, $color, $price);
+        $this->alcoholPercentage = $alcoholPercentage;
+    }
+
+    public function getAlcoholPercentage() : float
+    {
+       return $this->alcoholPercentage;
+    }
+}
+
+$Duvel = new Beer("Duvel", "blonde", 3.5, 8.5);
+$Duvel->getInfo();
+
+echo $Duvel-> getAlcoholPercentage();
+echo "<br>";
+echo $Duvel->alcoholPercentage;
+echo "<br>";
+echo $Duvel->color;
+echo "<br>";
+
 /* EXERCISE 2
 
 TODO: Make class beer that extends from Beverage.
